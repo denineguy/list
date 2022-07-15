@@ -19,5 +19,8 @@
   "homepage": "https://github.com/denineguy/list#readme",
   "bin": {
     "nls": "index.js"
+  },
+  "dependencies": {
+    "chalk": "^4.1.0"
   }
 }
