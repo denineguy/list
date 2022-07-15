@@ -1,7 +1,7 @@
 //fs is filesystem
 const fs = require('fs')
 
-fs.readdir('.', (err, filenames) => {
+fs.readdir(process.cwd(), (err, filenames) => {
     //Either
     // err ===  an error object , which means something went wrong 
     //OR
