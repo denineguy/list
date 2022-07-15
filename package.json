@@ -16,5 +16,8 @@
   "bugs": {
     "url": "https://github.com/denineguy/list/issues"
   },
-  "homepage": "https://github.com/denineguy/list#readme"
+  "homepage": "https://github.com/denineguy/list#readme",
+  "bin": {
+    "nls": "index.js"
+  }
 }
