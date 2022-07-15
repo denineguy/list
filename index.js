@@ -1,38 +1,34 @@
 #!/usr/bin/env node
 
 //fs is filesystem
-const fs = require('fs')
+const fs = require('fs');
+const util = require('util');
+
+//Method #2
+// const lstat = util.promisify(fs.lstat);
+
+
+//Method #3
+const {lstat} = fs.promises;
 
 fs.readdir(process.cwd(), (err, filenames) => {
-    //Either
-    // err ===  an error object , which means something went wrong 
-    //OR
-    //err === null, which means everything is ok
     if (err) {
         // error handling code here
         console.log(err)
     }
 
-    const allStats = Array(filenames.length).fill(null);
-    
-    for (let filename of filenames) {
-        const index = filenames.indexOf(filename);
-        fs.lstat(filename, (err, stats) => {
-            if(err) {
-                console.log(err);
-            }
-            allStats[index] = stats;
-
-            const ready = allStats.every((stats) => {
-                return stats;
-            });
-
-            if (ready) {
-                allStats.forEach((stats, index) => {
-                    console.log(filenames[index], stats.isFile());
-                })
-            }
-        })
-    }
-
 })
+
+// Method #1
+
+// const lstat = (filename) => {
+//     return new Promise((resolve, reject) => {
+//         fs.lstat(filename, (err,stats) => {
+//             if (err) {
+//                 reject(err);
+//             }
+
+//             resolve(stats);
+//         })
+//     })
+// }
